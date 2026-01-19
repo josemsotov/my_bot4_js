@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<robot name="SMART-TROLLEY_V5" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find my_bot4_js)/description/materials.xacro" />
+<xacro:include filename="$(find my_bot4_js)/description/SMART-TROLLEY_V5.trans" />
+<xacro:include filename="$(find my_bot4_js)/description/SMART-TROLLEY_V5.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0 0.0025 -1.4135798584282298e-18" rpy="0 0 0"/>
+    <mass value="0.012330751165339937"/>
+    <inertia ixx="0.0" iyy="1e-06" izz="0.0" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="0.09990876350575989 0.2757195754593127 -0.23592849666122193" rpy="0 0 0"/>
+    <mass value="1.3312484882428781"/>
+    <inertia ixx="0.003087" iyy="0.005539" izz="0.003087" ixy="-0.0" iyz="-1e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.099914 -0.000901 -0.335814" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.099914 -0.000901 -0.335814" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="0.10017758929019482 -0.32572034337329986 0.23440912117154092" rpy="0 0 0"/>
+    <mass value="1.331249101131284"/>
+    <inertia ixx="0.003087" iyy="0.005539" izz="0.003087" ixy="-0.0" iyz="-1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.100173 -0.000641 0.134186" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.100173 -0.000641 0.134186" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="chassis_1">
+  <inertial>
+    <origin xyz="-0.16234313440897566 0.000839362743162796 0.22494260544094216" rpy="0 0 0"/>
+    <mass value="15.301157428367338"/>
+    <inertia ixx="0.321455" iyy="0.643182" izz="0.424982" ixy="-5.2e-05" iyz="-0.00012" ixz="-0.093804"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/chassis_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find my_bot4_js)/meshes/chassis_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="-0.099914 0.000901 0.335814" rpy="0 0 0"/>
+  <parent link="chassis_1"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-0.0 1.0 -0.000551"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="-0.100173 0.000641 -0.134186" rpy="0 0 0"/>
+  <parent link="chassis_1"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 -1.0 0.000551"/>
+</joint>
+
+</robot>

@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="smart_trolley_v5">
 
-    <xacro:include filename="robot_core.urdf.xacro"/>
-    <xacro:include filename="gazebo_control.xacro"/>
-    <xacro:include filename="lidar.xacro"/>
-     <xacro:include filename="camera.xacro"/>
+    <!-- Include the SMART-TROLLEY URDF -->
+    <xacro:include filename="$(find my_bot4_js)/description/SMART-TROLLEY_V5.xacro"/>
+    
+    <!-- Include Gazebo Sim control plugin -->
+    <xacro:include filename="$(find my_bot4_js)/description/gazebo_control_trolley.xacro"/>
 
 </robot>
