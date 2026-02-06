@@ -88,6 +88,12 @@
   </collision>
 </link>
 
+<joint name="base_to_chassis" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="chassis_1"/>
+</joint>
+
 <joint name="left_wheel_joint" type="continuous">
   <origin xyz="-0.099914 0.000901 0.335814" rpy="0 0 0"/>
   <parent link="chassis_1"/>
